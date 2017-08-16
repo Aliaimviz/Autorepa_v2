@@ -1,6 +1,3 @@
-@extends('masterlayout')
-@section('content')
-
 <form id="lookUpForm" name="lookUpForm">
 
 	<select name="carBrand" id="carBrand">
@@ -26,5 +23,3 @@
 	<input type="file" name="carPic" id="carPic">
 	<input type="submit" value="Next" name="submit"/>
 </form>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
