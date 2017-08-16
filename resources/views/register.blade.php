@@ -1,28 +1,49 @@
  <div class="singup-form">
    <div class="container">
      <div class="row">
+     <form id="registerForm" action="{{route('registerFormSubmit')}}">
        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 float-left">
-       <select data-placeholder="Form Of Adress">
+        <!--<select data-placeholder="Form Of Adress">
           <option>Form Of Adress</option>
           <option value="MR">Mr.</option>
           <option value="MRS">Mrs.</option>
           <option value="MISS">Miss.</option>
-        </select>
+        </select> -->
        </div>
        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 float-left">
-         <input type="text" placeholder="First Name">
+          <b>Name:</b>        
+         <input type="text" name="name" placeholder="First Name">
        </div>
        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 float-left">
-         <input type="text" placeholder="Last Name">
+          <b>Address</b>
+          <input type="text" name="address" class="form-control" value="" id="datetimepicker4" >
        </div>
+
        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 float-left">
-          <input type="text" class="form-control" value="Date Of Birth" id="datetimepicker4" >
+          <b>Postal</b>
+          <input type="text" name="postal" class="form-control" value="" id="datetimepicker4" >
        </div>
+
+       <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 float-left">
+          <b>Phone</b>
+          <input type="number" name="phone" class="form-control" value="" id="datetimepicker4" >
+       </div>
+
+       <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 float-left">
+          <b>City</b> 
+          <select id="city_id" name="city_id">
+             @foreach($cities as $city)
+              <option value="{{$city->id}}">{{$city->city_name}}</option>
+             @endforeach
+          </select> 
+       </div>
+
       </div>
 
       <div class="row">
        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 float-left">
-          <input type="email" placeholder="Email Id">
+          <b>Email</b>        
+          <input type="email" name="email" placeholder="Email Id">
        </div>
        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 float-left">
          <select data-placeholder="Language...">
@@ -103,28 +124,26 @@
        </div>
 
        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 float-left">
-         <select data-placeholder="I Am...">
-          <select option="1">I Am a Garage Owner</select>
-          <select option="2">I Am a Customer</select>
+         <select name="userRole" id="userRole" data-placeholder="I Am...">
+          <option value="1">I Am a Garage Owner</option>
+          <option value="2">I Am a Customer</option>
        </div>
-
-       <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 float-left">
-         <input type="text" placeholder="Username">
-       </div>
+       <br>
       </div>
 
       <div class="row passbtn">
          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 float-left">
-           <input type="password" placeholder="Password">
+           <input type="password" name="password" placeholder="Password">
          </div>
          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 float-left">
-           <input type="password" placeholder="Conform Password">           
+           <input type="password" name="password2" placeholder="Conform Password">           
          </div>
          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 float-left">
-           <a href="#">Create Account</a>
+           
+           <input type="submit" name="submit" value="submit">
          </div>
       </div>
-
+  </form>      
       <div class="row">
          <div class="invoice-btn invoice-btn-la">
            <button onclick="goBack()" > Back </button>        

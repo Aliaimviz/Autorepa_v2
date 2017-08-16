@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/shop-lookup', 'CustomerController@GarageLookUp');
+
+Route::get('/register', 'Auth\RegisterController@registerView');
+
+Route::get('/register-submit', 'Auth\RegisterController@registerSubmit')->name('registerFormSubmit');

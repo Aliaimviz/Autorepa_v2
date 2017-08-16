@@ -6,6 +6,8 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\City;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -37,6 +39,34 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+    }
+
+    public function registerView(){
+        $cities = City::all();
+        return view('register')->with('cities', $cities);
+    }
+
+    public function registerSubmit(Request $request){
+        //dd($request->input('city_id'));
+
+        $user = User::create([
+            'name' => $request->input('name'),
+            'address' => $request->input('address'),
+            'postal' => $request->input('postal'),
+            'phone' => $request->input('phone'),
+            'city_id' => $request->input('city_id'),
+            'email' => $request->input('email'),
+            'password' => bcrypt( $request->input('password') ),
+        ]);
+        if($user){ 
+            //$user->roles()->attach($user->id);
+            \DB::table('role_user')->insert([
+                'user_id' => $user->id, 'role_id' => $request->input('userRole')
+
+            ]);
+        }else{
+           return 0; 
+        }   
     }
 
     /**
