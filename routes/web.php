@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/shop-lookup', 'CustomerController@GarageLookUp');
+
+Route::post('/shop-lookup', 'CustomerController@GarageLookUp_post')->name('GarageLookUp_post');
