@@ -16,3 +16,7 @@ Route::get('/', function () {
 });
 Route::get('/garage_registration','GarageController@garage_registration');
 Route::post('/garage_post','GarageController@garage_post')->name('garage_ragister');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
