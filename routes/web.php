@@ -14,9 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/garage_registration','GarageController@garage_registration');
-Route::post('/garage_post','GarageController@garage_post')->name('garage_ragister');
 
-Auth::routes();
+Route::get('/shop-lookup', 'CustomerController@GarageLookUp');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/register', 'Auth\RegisterController@registerView');
+
+Route::get('/register-submit', 'Auth\RegisterController@registerSubmit')->name('registerFormSubmit');
