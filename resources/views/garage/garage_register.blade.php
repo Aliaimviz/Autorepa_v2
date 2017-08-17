@@ -1,7 +1,7 @@
 <form method="post" action="{{route('garage_ragister')}}">
   <input type="text" name="name"/>
   <input type="hidden" name="city_id" value="1"/>
-  <input type="text" name="email"/>
+  <input type="email" name="email"/>
   <input type="text" name="desc"/>
   <input type="number" name="phone"/>
   <input type="text" name="address"/>

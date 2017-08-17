@@ -19,13 +19,11 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'email', 'password', 'city_id', 'address', 'postal', 'phone', 'pic'
     ];
-
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function garage(){
+        return $this->hasOne('App\Garage','user_id', 'id');
+    }
 }
