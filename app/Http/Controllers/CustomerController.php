@@ -8,6 +8,7 @@ use App\Car_model;
 use App\Job_type;
 use App\Job;
 use Illuminate\Support\Facades\Input;
+use Auth;
 
 class CustomerController extends Controller
 {
@@ -28,7 +29,7 @@ class CustomerController extends Controller
 		}
 
     	$job = new Job();
-    	$job->user_id = 2;
+    	$job->user_id = Auth::user()->id;
     	$job->job_type_id = 2;//checkboxes $request->input('');
     	$job->job_title = $request->input('job_title');
     	$job->job_desc = $request->input('job_desc');
