@@ -58,12 +58,11 @@ class RegisterController extends Controller
             'email' => $request->input('email'),
             'password' => bcrypt( $request->input('password') ),
         ]);
-        if($user){ 
-            //$user->roles()->attach($user->id);
+        if($user){            
             \DB::table('role_user')->insert([
                 'user_id' => $user->id, 'role_id' => $request->input('userRole')
-
             ]);
+            dd("Registered");
         }else{
            return 0; 
         }   

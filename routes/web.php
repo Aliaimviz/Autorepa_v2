@@ -11,12 +11,16 @@
 |
 */
 
+Auth::routes();
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/shop-lookup', 'CustomerController@GarageLookUp');
 
-Route::get('/register', 'Auth\RegisterController@registerView');
+Route::post('/shop-lookup', 'CustomerController@GarageLookUp_post')->name('GarageLookUp_post');
 
-Route::get('/register-submit', 'Auth\RegisterController@registerSubmit')->name('registerFormSubmit');
+Route::get('/register', 'Auth\RegisterController@registerView')->name('register');
+
+Route::post('/register-submit', 'Auth\RegisterController@registerSubmit')->name('registerFormSubmit');
