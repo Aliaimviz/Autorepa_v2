@@ -1,7 +1,7 @@
  <div class="singup-form">
    <div class="container">
      <div class="row">
-     <form id="registerForm" action="{{route('registerFormSubmit')}}">
+     <form id="registerForm" method="post" action="{{route('registerFormSubmit')}}">
        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 float-left">
         <!--<select data-placeholder="Form Of Adress">
           <option>Form Of Adress</option>
