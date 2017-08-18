@@ -28,7 +28,7 @@
    	<p><input id="checkBoxJobType" name="checkBoxJobType" type="radio" value="{{$job_type->id}}"> {{$job_type->name}}</p>
    @endforeach
    	<b>Job Title: </b> <input type="text" name="job_title" id="job_title"> 	
-	<b>Description: </b> <textarea name="job_desc" id="job_desc"> </textarea>  
+	<b>Description: </b> <textarea name="job_desc" id="job_desc"></textarea>  
 	<b>Address: </b> <input type="text" name="address" id="address">
 	<b>Budget: </b> <input type="number" name="budget" id="budget">	
 	<input type="submit" value="Next" name="submit"/>

@@ -21,11 +21,11 @@ class CustomerController extends Controller
     }
 
     public function GarageLookUp_post(Request $request){
-    	//dd($request->input('checkBoxJobType')); //carBrand
+    	
     	$job_typeArray = "";
-
+    	
     	foreach($request->input('checkBoxJobType') as $value){
-		  $job_typeArray.=$value;//dd($value);
+		  $job_typeArray.=$value;
 		}
 
     	$job = new Job();
@@ -35,9 +35,7 @@ class CustomerController extends Controller
     	$job->job_desc = $request->input('job_desc');
     	$job->address = $request->input('address'); 
     	$job->car_brand = $request->input('carBrand');
-
-    	$job->car_model = $request->input('carModel');
-    	
+    	$job->car_model = $request->input('carModel');    	
     	$job->pics = $request->input('carPic'); 
     	
           if(Input::hasFile('carPic')) {
