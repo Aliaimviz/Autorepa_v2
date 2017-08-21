@@ -21,7 +21,6 @@ class RegisterController extends Controller
     | provide this functionality without requiring any additional code.
     |
     */
-
     use RegistersUsers;
 
     /**
@@ -56,31 +55,44 @@ class RegisterController extends Controller
             'postal' => $request->input('postal'),
             'phone' => $request->input('phone'),
         ]);
-        return $user;
-    }
 
-    public function registerSubmit(Request $request){
-        //dd($request->input('city_id'));
-
-        $user = User::create([
-            'name' => $request->input('name'),
-            'address' => $request->input('address'),
-            'postal' => $request->input('postal'),
-            'phone' => $request->input('phone'),
-            'city_id' => $request->input('city_id'),
-            'email' => $request->input('email'),
-            'password' => bcrypt( $request->input('password') ),
-        ]);
-        if($user){ 
+        if($user){
             //$user->roles()->attach($user->id);
             \DB::table('role_user')->insert([
                 'user_id' => $user->id, 'role_id' => $request->input('userRole')
 
             ]);
+
+            return $user;
+
         }else{
-           return 0; 
-        }   
+           return 0;
+        }
+
     }
+
+    // public function registerSubmit(Request $request){
+    //   //  dd($request->input('email'));
+    //
+    //     $user = User::create([
+    //         'name' => $request->input('name'),
+    //         'address' => $request->input('address'),
+    //         'postal' => $request->input('postal'),
+    //         'phone' => $request->input('phone'),
+    //         'city_id' => $request->input('city_id'),
+    //         'email' => $request->input('email'),
+    //         'password' => bcrypt( $request->input('password') ),
+    //     ]);
+    //     if($user){
+    //         //$user->roles()->attach($user->id);
+    //         \DB::table('role_user')->insert([
+    //             'user_id' => $user->id, 'role_id' => $request->input('userRole')
+    //
+    //         ]);
+    //     }else{
+    //        return 0;
+    //     }
+    // }
 
     /**
      * Get a validator for an incoming registration request.

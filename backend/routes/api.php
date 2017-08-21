@@ -17,4 +17,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return User::all();
 });
 
-Route::post('/post', 'Auth\RegisterController@registerUser');
+Route::middleware('auth:api')->get('/jobs', 'JobController@getJobs');
+
+Route::post('/register', 'Auth\RegisterController@registerUser');
+
+//Job Post Api
+Route::post('/job-post', 'CustomerController@GarageLookUp_post')->name('GarageLookUp_post');

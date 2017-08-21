@@ -6,7 +6,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
 
-$client = new Client(['base_uri' => 'http://localhost/example/backend/public/']);
+$client = new Client(['base_uri' => 'http://localhost/Autorepa_v2/backend/public/']);
 try{
     $response = $client->post('oauth/token', [
         'form_params' => [
@@ -21,27 +21,33 @@ try{
 
     // You'd typically save this payload in the session
     $auth = json_decode( (string) $response->getBody() );
-    
-    $response  = $client->post('api/post', [
+
+    /*echo "<pre>";
+    print_r($auth);
+    echo "</pre>";*/
+    //die();
+
+    $response = $client->get('api/jobs', [
         'headers' => [
             'Authorization' => 'Bearer '.$auth->access_token,
             'Accept' => 'application/json',
             'Content-Type' => 'application/json',
-        ],
-        'json' => [
-            'email' => 'tesasdasdt@gmail.com',
-            'name' => 'Test user',
-            'password' => 'abc123',
-            'address' => 'abc address',
-            'postal' => '75210',
-            'phone' => '000',
-            'city_id' => '1',
-            'userRole' => '1',
         ]
     ]);
-    //var_dump($response);
-    echo $response->getBody();
 
+    $todos = json_decode( (string) $response->getBody() );
+    /*echo $todos;
+    die();*/
+    echo "<pre>";
+    print_r($todos);
+    echo "</pre>";
+    die();
+    $todoList = "";
+    /*foreach ($todos as $todo) {
+        $todoList .= "<li>{$todo->name} </li>";
+    }
+*/
+    echo "<ul>{$todoList}</ul>";
 }
 catch (Exception $e) {
     echo 'Caught exception: ',  $e->getMessage(), "\n";
