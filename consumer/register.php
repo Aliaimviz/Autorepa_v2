@@ -6,7 +6,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
 
-$client = new Client(['base_uri' => 'http://localhost/example/Autorepa_v2/public/']);
+$client = new Client(['base_uri' => 'http://localhost/Autorepa_v2/backend/public/']);
 try{
     $response = $client->post('oauth/token', [
         'form_params' => [
@@ -21,20 +21,20 @@ try{
 
     // You'd typically save this payload in the session
     $auth = json_decode( (string) $response->getBody() );
-    
-    $response  = $client->post('api/post', [
+
+    $response  = $client->post('api/register', [
         'headers' => [
             'Authorization' => 'Bearer '.$auth->access_token,
             'Accept' => 'application/json',
             'Content-Type' => 'application/json',
         ],
         'json' => [
-            'email' => 'test@gmail.com',
-            'name' => 'Test user',
-            'password' => 'abc123',
+            'email' => 'test4446472@gmail.com', //$_POST['email'], //
+            'name' => 'Test use 2',
+            'password' => 'abc71234',
             'address' => 'abc address',
-            'postal' => '75210',
-            'phone' => '000',
+            'postal' => '755210',
+            'phone' => '020',
             'city_id' => '1',
             'userRole' => '1',
         ]

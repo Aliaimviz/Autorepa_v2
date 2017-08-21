@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Route::get('/shop-lookup', 'CustomerController@GarageLookUp');
 
-Route::post('/shop-lookup', 'CustomerController@GarageLookUp_post')->name('GarageLookUp_post');
+Route::post('/job-psot', 'CustomerController@GarageLookUp_post')->name('GarageLookUp_post');
 
 Route::get('/register', 'Auth\RegisterController@registerView')->name('register');
 

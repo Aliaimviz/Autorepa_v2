@@ -21,53 +21,55 @@ class CustomerController extends Controller
     }
 
     public function GarageLookUp_post(Request $request){
-    	
+      //dd($request->input());
+    //  dd('check');
+    //  print_r($request->input('address'));
+    //  die();
     	$job_typeArray = "";
-    	
-    	foreach($request->input('checkBoxJobType') as $value){
-		  $job_typeArray.=$value;
-		}
-
+      //dd($request->input('checkBoxJobType'));
+    	//foreach($request->input('checkBoxJobType') as $value){
+		  $job_typeArray = $request->input('checkBoxJobType');
+		//}
     	$job = new Job();
-    	$job->user_id = Auth::user()->id;
-    	$job->job_type_id = 2;//checkboxes $request->input('');
+    	$job->user_id = 3;//Auth::user()->id;
+    	//$job->job_type_id = 2;//checkboxes $request->input('');
     	$job->job_title = $request->input('job_title');
     	$job->job_desc = $request->input('job_desc');
-    	$job->address = $request->input('address'); 
+    	$job->address = $request->input('address');
     	$job->car_brand = $request->input('carBrand');
-    	$job->car_model = $request->input('carModel');    	
-    	$job->pics = $request->input('carPic'); 
-    	
-          if(Input::hasFile('carPic')) {
-            //upload an image to the /img/tmp directory and return the filepath.
-            $imageCount = count(Input::file('carPic'));
+    	$job->car_model = $request->input('carModel');
+    	$job->pics = 'randomPic';//$request->input('carPic');
 
-            $finalpath = "";
-            for($i=0; $i<$imageCount; $i++){
-              $file = Input::file('carPic')[$i];
-              $tmpFilePath = '/job_pics/';
-              $tmpFileName = time() . '-' . $file->getClientOriginalName();
-              $tmpFileName = preg_replace('/\s+/', '', $tmpFileName);
-              $file = $file->move(public_path() . $tmpFilePath, $tmpFileName);
-              $path = $tmpFilePath . $tmpFileName;
-              $finalpath .= $path;
-              if($i != $imageCount-1){
-                  $finalpath .= ',';
-              }
-            }
-            $job->pics = $finalpath;
-         }
+        //   if(Input::hasFile('carPic')) {
+        //     //upload an image to the /img/tmp directory and return the filepath.
+        //     $imageCount = count(Input::file('carPic'));
+         //
+        //     $finalpath = "";
+        //     for($i=0; $i<$imageCount; $i++){
+        //       $file = Input::file('carPic')[$i];
+        //       $tmpFilePath = '/job_pics/';
+        //       $tmpFileName = time() . '-' . $file->getClientOriginalName();
+        //       $tmpFileName = preg_replace('/\s+/', '', $tmpFileName);
+        //       $file = $file->move(public_path() . $tmpFilePath, $tmpFileName);
+        //       $path = $tmpFilePath . $tmpFileName;
+        //       $finalpath .= $path;
+        //       if($i != $imageCount-1){
+        //           $finalpath .= ',';
+        //       }
+        //     }
+        //     $job->pics = $finalpath;
+        //  }
 
     	$job->budget = $request->input('budget');
     	$job->job_type_id = $job_typeArray;
     	// $job->expiry_date = $request->input('');
-    	// $job->payment_status = $request->input(''); 
-    	$job->status_id = 1;//$request->input('');    	    	
-    	
+    	// $job->payment_status = $request->input('');
+    	$job->status_id = 1;//$request->input('');
+
     	if($job->save()){
-    		dd("job posted");
+    		echo "job posted";
     	}else{
-    		dd("job not posted");
-    	}    	
+    		echo "job not posted";
+    	}
     }
 }
