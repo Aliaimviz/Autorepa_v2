@@ -8,7 +8,7 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
 
 $token = new Auth_token;
-$client = new Client(['base_uri' => 'http://localhost/example/backend/public/']);
+$client = new Client(['base_uri' => $token->base_uri]);
 try{
     
     $response = $client->get('api/user', [
