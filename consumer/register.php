@@ -10,7 +10,7 @@ $client = new Client(['base_uri' => 'http://localhost/Autorepa_v2/backend/public
 try{
     $response = $client->post('oauth/token', [
         'form_params' => [
-            'grant_type' => 'password',
+            'grant_type' =>       'password',
             'client_id' => 2,
             'client_secret' => 'ZvLbTJY3Z6aPZC948mwVIZIMh0gAtt9cfh8fRpZ9',
             'username' => 'irfan.aimviz@gmail.com',
