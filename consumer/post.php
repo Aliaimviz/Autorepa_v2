@@ -6,7 +6,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
 
-$client = new Client(['base_uri' => 'http://localhost/example/Autorepa_v2/public/']);
+$client = new Client(['base_uri' => 'http://localhost/example/backend/public/']);
 try{
     $response = $client->post('oauth/token', [
         'form_params' => [
@@ -29,7 +29,7 @@ try{
             'Content-Type' => 'application/json',
         ],
         'json' => [
-            'email' => 'test@gmail.com',
+            'email' => 'tesasdasdt@gmail.com',
             'name' => 'Test user',
             'password' => 'abc123',
             'address' => 'abc address',
