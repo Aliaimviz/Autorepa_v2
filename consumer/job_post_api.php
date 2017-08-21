@@ -10,23 +10,10 @@ use GuzzleHttp\Psr7\Request;
 $token = new Auth_token;
 $client = new Client(['base_uri' => $token->base_uri]);
 try{
-    $response = $client->post('oauth/token', [
-        'form_params' => [
-            'grant_type' => 'password',
-            'client_id' => 2,
-            'client_secret' => 'ZvLbTJY3Z6aPZC948mwVIZIMh0gAtt9cfh8fRpZ9',
-            'username' => 'irfan23.aimviz@gmail.com',
-            'password' => 'abcasd23sad123',
-            'scope' => '*',
-        ]
-    ]);
-
-    // You'd typically save this payload in the session
-    $auth = json_decode( (string) $response->getBody() );
 
     $response  = $client->post('api/job-post', [
         'headers' => [
-            'Authorization' => 'Bearer '.$auth->access_token,
+            'Authorization' => 'Bearer '.$token->token,
             'Accept' => 'application/json',
             'Content-Type' => 'application/json',
         ],
