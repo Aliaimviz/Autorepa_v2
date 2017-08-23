@@ -44,21 +44,21 @@ class CustomerController extends Controller
         //     //upload an image to the /img/tmp directory and return the filepath.
         //     $imageCount = count(Input::file('carPic'));
          //
-        //     $finalpath = "";
-        //     for($i=0; $i<$imageCount; $i++){
-        //       $file = Input::file('carPic')[$i];
-        //       $tmpFilePath = '/job_pics/';
-        //       $tmpFileName = time() . '-' . $file->getClientOriginalName();
-        //       $tmpFileName = preg_replace('/\s+/', '', $tmpFileName);
-        //       $file = $file->move(public_path() . $tmpFilePath, $tmpFileName);
-        //       $path = $tmpFilePath . $tmpFileName;
-        //       $finalpath .= $path;
-        //       if($i != $imageCount-1){
-        //           $finalpath .= ',';
-        //       }
-        //     }
-        //     $job->pics = $finalpath;
-        //  }
+            $finalpath = "";
+            for($i=0; $i<$imageCount; $i++){
+              $file = Input::file('carPic')[$i];
+              $tmpFilePath = '/job_pics/';
+              $tmpFileName = time() . '-' . $file->getClientOriginalName();
+              $tmpFileName = preg_replace('/\s+/', '', $tmpFileName);
+              $file = $file->move(public_path() . $tmpFilePath, $tmpFileName);
+              $path = $tmpFilePath . $tmpFileName;
+              $finalpath .= $path;
+              if($i != $imageCount-1){
+                  $finalpath .= ',';
+              }
+            }
+            $job->pics = $finalpath;
+         }
 
     	$job->budget = $request->input('budget');
     	$job->job_type_id = $job_typeArray;

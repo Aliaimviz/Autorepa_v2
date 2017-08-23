@@ -30,3 +30,10 @@ Route::post('/register-submit', 'Auth\RegisterController@registerSubmit')->name(
 Route::get('/profile', 'ProfileController@customerProfile')->name('customerProfile');
 Route::get('/editProfile', 'ProfileController@customerProfile_edit')->name('customerProfile_edit');
 Route::post('/editProfile', 'ProfileController@customerProfile_edit_post')->name('customerProfile_edit_post');
+
+Route::get('/best-offers/{id}', 'JobController@getBestOffers')->name('get_Best_offers');
+
+Route::post('/select-offer/', 'JobController@selectOffer')->name('sel_offer');
+
+//Complete a Job
+Route::post('/complete-job/', 'JobController@completeJob')->name('sel_offer');

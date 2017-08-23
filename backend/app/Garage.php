@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Garage extends Model
 {
     protected $fillable = [
-          'user_id','city_id','name', 'email', 'description','phone','address','postal','pic'
+          'user_id','city_id','name', 'email', 'description','phone','address','postal', 'rating','pic'
       ];
     public function city()
     {
