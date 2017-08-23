@@ -17,6 +17,6 @@ Route::get('/', function () {
 
 Route::get('/shop-lookup', 'CustomerController@GarageLookUp');
 
-Route::get('/register', 'Auth\RegisterController@registerView');
+Route::get('/register', 'Auth\RegisterController@registerView')->name('register');
 
 Route::get('/register-submit', 'Auth\RegisterController@registerSubmit')->name('registerFormSubmit');
