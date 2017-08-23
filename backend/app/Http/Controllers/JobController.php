@@ -8,6 +8,8 @@ use App\Job_offer;
 use Carbon\Carbon;
 use App\Review;
 use DB;
+use App\Notification;
+use App\Invoice;
 
 class JobController extends Controller
 {
@@ -73,9 +75,9 @@ class JobController extends Controller
 
         if($request->has('offer_id') && $request->has('job_id')){
             
-            try {                
+            try {
                 //Confirming Job offer selection request
-                $accepted_jobOffer_row = Job_offer::where('id', $request->input('offer_id'))->first(['deliver_date']);
+                $accepted_jobOffer_row = Job_offer::where('id', $request->input('offer_id'))->first(['deliver_date', 'garage_id', 'offer_price']);
                 
                 $expiry_date = $accepted_jobOffer_row->deliver_date;
 
@@ -86,15 +88,48 @@ class JobController extends Controller
 
                 $jobOffer = Job_offer::where('id', $request->input('offer_id'))->update(['status_id' => 7]); //Accepted status
 
+                $userdetail = Job::select('users.name', 'jobs.status_id')->join('users', 'users.id','=', 'jobs.user_id')
+                                    ->where('jobs.id', $request->input('job_id'))->first();
+
+                $invoiceNo = substr(uniqid(), 0, 4);
+                 //Generating Invoice
+                   $invoice = new Invoice();                                    
+                   $invoice->user_id = 3; //Auth::user()->id;
+                   $invoice->job_id= $request->input('job_id');
+                   $invoice->garage_id = $accepted_jobOffer_row->garage_id;
+                   $invoice->invoice_no = $invoiceNo;
+                   $invoice->status = $accepted_jobOffer_row->status_id;
+                   $invoice->amount = $accepted_jobOffer_row->offer_price; 
+                   $invoice->save();
+
+                // $invoice->amount = ;
+
+
+                //Creating new Notification
+                if($userdetail['name'] != null){
+                    $tempname = $userdetail['name'];
+                }else{
+                    $tempname = "";
+                }                    
+
+                $notification = new Notification();
+                $notification->description = 'Your Offer for Job No '.$request->input('job_id').' Has been Accepted by Customer '. $tempname;                
+                $notification->title = 'Offer Accepted';
+                $notification->notify_type = 'offer-acceptance';
+                $notification->sender_id = 3; //Auth::user()->id
+                $notification->receiver_id = $accepted_jobOffer_row->garage_id;
+                $notification->status = 0; //unread
+                $notification->save();
+
             } catch(\Exception $ex){
-                dd($ex->getMessage());
-                return response()->json(['error' => $ex->getMessage()], 401);     
+               
+                return response()->json(['error' => 'Error:'.$ex->getMessage()], 401);     
             }
 
             return response()->json(['success' => 'Offer Selected Succesfully'], 200); 
 
         }else{
-            return response()->json(['error' => 'offer not accepted.'], 401);            
+            return response()->json(['error' => 'offer not accepted.'], 401); 
         }
     }
 
@@ -115,7 +150,7 @@ class JobController extends Controller
                 $gotOfferRow = Job_offer::where('id', $gotJobRow->job_off_id)->first(['garage_id']);
 
                 $review = new Review();
-                $review->user_id = 2; //Auth::user()->id
+                $review->user_id = 3; //Auth::user()->id
                 $review->garage_id = $gotOfferRow->garage_id;
                 $review->job_id = $request->input('job_id');
                 $review->stars = $request->input('garage_rating');

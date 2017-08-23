@@ -36,4 +36,4 @@ Route::get('/best-offers/{id}', 'JobController@getBestOffers')->name('get_Best_o
 Route::post('/select-offer/', 'JobController@selectOffer')->name('sel_offer');
 
 //Complete a Job
-Route::post('/complete-job/', 'JobController@completeJob')->name('sel_offer');
+Route::post('/complete-job', 'JobController@completeJob')->name('sel_offer');

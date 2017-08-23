@@ -35,6 +35,12 @@ Route::get('/best-offers/{id}', 'JobController@getBestOffers')->name('get_Best_o
 //Select offers from Garages
 Route::middleware('auth:api')->post('/select-offer', 'JobController@selectOffer');
 
-
+//Complete Offer
+Route::middleware('auth:api')->post('/complete-job', 'JobController@completeJob')->name('completeJob');
 
 //Route::get('/best-offers/{id}', 'JobController@getBestOffers');
+
+/*Garage Section*/
+Route::group(['middleware' => ['auth:api']], function () {
+   //send proporsals
+   Route::post('/sendProposal', 'GarageController@sendProposal');
