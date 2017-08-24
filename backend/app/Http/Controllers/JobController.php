@@ -173,4 +173,32 @@ class JobController extends Controller
             return response()->json(['error' => 'Job couldnot be marked Completed.'], 401);            
         }        
     }
+
+    public function getCustomerJobs(){        
+      //Get Particular Customer Jobs //Auth::user()->id
+      return Job::where('user_id', 2)->get();
+    }
+
+    public function getGarageInProgressJobs(){
+      //Get Particular Garage Jobs //Auth::user()->id
+      return Job::join('job_offers', 'job_offers.job_id', '=', 'jobs.id')->where('g_user_id', 2)->get();
+    }
+
+    public function getCustomerInvoices(){
+ 
+        $invoices = Invoice::join('jobs', 'jobs.id', '=', 'invoices.job_id')
+                           ->join('job_offers', 'job_offers.id', '=', 'jobs.job_off_id')
+                           ->where('invoices.user_id', 3) //Auth::user()->id
+                           ->get();
+        return $invoices;       
+    }
+
+    public function getGarageInvoices(){
+        $invoices = Invoice::join('jobs', 'jobs.id', '=', 'invoices.job_id')
+                           ->join('job_offers', 'job_offers.id', '=', 'jobs.job_off_id')
+                           ->where('invoices.garage_id', 1) //Get garage id
+                           ->get();
+        return $invoices;        
+    }
+
 }

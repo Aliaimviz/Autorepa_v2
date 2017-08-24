@@ -37,3 +37,8 @@ Route::post('/select-offer/', 'JobController@selectOffer')->name('sel_offer');
 
 //Complete a Job
 Route::post('/complete-job', 'JobController@completeJob')->name('sel_offer');
+
+//Get Customer Jobs
+Route::get('/customer-jobs', 'JobController@getCustomerJobs')->name('getCustomerJobs');
+
+Route::get('/customer-invoices', 'JobController@getCustomerInvoices')->name('getCustomerInvoices');

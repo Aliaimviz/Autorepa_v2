@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use app\User;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -40,7 +41,21 @@ Route::middleware('auth:api')->post('/complete-job', 'JobController@completeJob'
 
 //Route::get('/best-offers/{id}', 'JobController@getBestOffers');
 
+//Customer Jobs
+Route::middleware('auth:api')->get('/customer-jobs', 'JobController@getCustomerJobs')->name('getCustomerJobs');
+
+//Garage Jobs 
+Route::middleware('auth:api')->get('/garage-in-progress-jobs', 'JobController@getGarageInProgressJobs')->name('getGarageJobs');
+
+//Customer Invoices
+Route::middleware('auth:api')->get('/customer-invoices', 'JobController@getCustomerInvoices')->name('getCustomerInvoicse');
+
+//Garage Invoices
+Route::middleware('auth:api')->get('/garage-invoices', 'JobController@getGarageInvoices')->name('getGarageInvoices');
+
 /*Garage Section*/
 Route::group(['middleware' => ['auth:api']], function () {
    //send proporsals
    Route::post('/sendProposal', 'GarageController@sendProposal');
+});
+
