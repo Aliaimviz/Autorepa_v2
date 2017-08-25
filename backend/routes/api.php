@@ -53,6 +53,20 @@ Route::middleware('auth:api')->get('/customer-invoices', 'JobController@getCusto
 //Garage Invoices
 Route::middleware('auth:api')->get('/garage-invoices', 'JobController@getGarageInvoices')->name('getGarageInvoices');
 
+
+//Single Invoice
+Route::middleware('auth:api')->get('/single-invoice/{id}', 'JobController@getSingleInvoice')->name('getSingleInvoice');
+
+//customerProfile
+Route::middleware('auth:api')->get('/customerProfile', 'ProfileController@customerProfile')->name('customerProfile');
+
+//Edit customerProfile
+Route::middleware('auth:api')->get('/edit-customerProfile', 'ProfileController@editProfile_view')->name('customerProfile');
+
+//edit Customer Profile
+Route::middleware('auth:api')->post('/editCustomerProfile', 'ProfileController@customerProfile_edit')->name('customerProfile_edit');
+
+
 /*Garage Section*/
 Route::group(['middleware' => ['auth:api']], function () {
    //send proporsals

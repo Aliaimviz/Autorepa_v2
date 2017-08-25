@@ -22,6 +22,7 @@ try{
     echo $response->getBody();
 
 }
+
 catch (Exception $e) {
     echo 'Caught exception: ',  $e->getMessage(), "\n";
     //print_r($e);

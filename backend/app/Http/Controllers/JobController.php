@@ -174,7 +174,7 @@ class JobController extends Controller
         }        
     }
 
-    public function getCustomerJobs(){        
+    public function getCustomerJobs(){
       //Get Particular Customer Jobs //Auth::user()->id
       return Job::where('user_id', 2)->get();
     }
@@ -198,7 +198,15 @@ class JobController extends Controller
                            ->join('job_offers', 'job_offers.id', '=', 'jobs.job_off_id')
                            ->where('invoices.garage_id', 1) //Get garage id
                            ->get();
-        return $invoices;        
+        return $invoices;
+    }
+
+    public function getSingleInvoice($invoiceId){
+        $invoices = Invoice::join('jobs', 'jobs.id', '=', 'invoices.job_id')
+                           ->join('job_offers', 'job_offers.id', '=', 'jobs.job_off_id')
+                           ->where('invoices.id', '=', $invoiceId) //Get garage id
+                           ->get();
+        return $invoices;                           
     }
 
 }

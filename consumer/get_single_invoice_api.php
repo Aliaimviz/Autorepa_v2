@@ -11,7 +11,7 @@ $token = new Auth_token;
 $client = new Client(['base_uri' => $token->base_uri]);
 try{
 
-    $response  = $client->get('api/garage-invoices', [
+    $response  = $client->get('api/single-invoice/'.$_GET['id'], [
         'headers' => [
             'Authorization' => 'Bearer '.$token->token,
             'Accept' => 'application/json',

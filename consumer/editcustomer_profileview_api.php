@@ -11,14 +11,14 @@ $token = new Auth_token;
 $client = new Client(['base_uri' => $token->base_uri]);
 try{
 
-    $response  = $client->get('api/garage-invoices', [
+    $response  = $client->get('api/edit-customerProfile', [
         'headers' => [
             'Authorization' => 'Bearer '.$token->token,
             'Accept' => 'application/json',
             'Content-Type' => 'application/json',
         ]
     ]);
-    //var_dump($response);
+ 
     echo $response->getBody();
 
 }
