@@ -129,5 +129,4 @@ class GarageController extends Controller
             return response()->json(['error' => 'Error:'.$e->getMessage()], 401); 
         }
     }
-
 }

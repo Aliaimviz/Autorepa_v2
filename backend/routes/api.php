@@ -40,7 +40,30 @@ Route::middleware('auth:api')->post('/complete-job', 'JobController@completeJob'
 
 //Route::get('/best-offers/{id}', 'JobController@getBestOffers');
 
+//Customer Jobs
+Route::middleware('auth:api')->get('/customer-jobs', 'JobController@getCustomerJobs')->name('getCustomerJobs');
 
+//Garage Jobs 
+Route::middleware('auth:api')->get('/garage-in-progress-jobs', 'JobController@getGarageInProgressJobs')->name('getGarageJobs');
+
+//Customer Invoices
+Route::middleware('auth:api')->get('/customer-invoices', 'JobController@getCustomerInvoices')->name('getCustomerInvoicse');
+
+//Garage Invoices
+Route::middleware('auth:api')->get('/garage-invoices', 'JobController@getGarageInvoices')->name('getGarageInvoices');
+
+
+//Single Invoice
+Route::middleware('auth:api')->get('/single-invoice/{id}', 'JobController@getSingleInvoice')->name('getSingleInvoice');
+
+//customerProfile
+Route::middleware('auth:api')->get('/customerProfile', 'ProfileController@customerProfile')->name('customerProfile');
+
+//Edit customerProfile
+Route::middleware('auth:api')->get('/edit-customerProfile', 'ProfileController@editProfile_view')->name('customerProfile');
+
+//edit Customer Profile
+Route::middleware('auth:api')->post('/editCustomerProfile', 'ProfileController@customerProfile_edit')->name('customerProfile_edit');
 
 
 /*Garage Section*/
