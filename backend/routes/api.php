@@ -79,4 +79,8 @@ Route::group(['middleware' => ['auth:api']], function () {
 
    //Get Garage Notifications
    Route::get('/notifications/{id}', 'GarageController@reviews');
+
+
+   //Garage Registration
+   Route::post('/garageRegistration', 'ProfileController@garageRegistration');
 });

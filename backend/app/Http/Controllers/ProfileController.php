@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Garage;
 use Auth;
 
 class ProfileController extends Controller
@@ -67,5 +68,33 @@ class ProfileController extends Controller
     public function editProfile_view(Request $request){
         $editProfile = User::where('id', Auth::user()->id)->first();
         return $editProfile;
+    }
+
+    public function garageRegistration(Request $request){
+        $validate = Garage::where('user_id', $request->user_id)->first();
+        if ($validate) {
+            $garage = Garage::where('user_id', $request->user_id)->update([
+                'city_id' => $request->city_id,
+                'name' => $request->name,
+                'email' => $request->email,
+                'description' => $request->description,
+                'phone' => $request->phone,
+                'address' => $request->address,
+                'postal' => $request->postal,
+            ]);
+        }
+        else{
+            $garage = Garage::create([
+                    'user_id' => $request->user_id,
+                    'city_id' => $request->city_id,
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'description' => $request->description,
+                    'phone' => $request->phone,
+                    'address' => $request->address,
+                    'postal' => $request->postal,
+                ]);
+        }
+        return response()->json(['success' => $garage], 200);
     }
 }

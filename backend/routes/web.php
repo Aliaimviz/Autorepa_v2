@@ -47,3 +47,6 @@ Route::get('/customer-invoices', 'JobController@getCustomerInvoices')->name('get
 
 //Edit profile post
 Route::post('/editCustomerProfile', 'ProfileController@customerProfile_edit')->name('customerProfile_edit');
+
+//Garage Registration
+   Route::post('/garageRegistration', 'ProfileController@garageRegistration');
