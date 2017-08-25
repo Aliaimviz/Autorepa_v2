@@ -122,7 +122,7 @@ class GarageController extends Controller
     }
 
     public function notifications($user_id){
-        try { 
+        try {   
             $reviews = Notification::where('user_id', $user_id)->get();
             return response()->json(['Success' => $reviews], 200); 
         } catch (\Exception $e) {
