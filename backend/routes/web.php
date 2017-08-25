@@ -49,6 +49,7 @@ Route::get('/customer-invoices', 'JobController@getCustomerInvoices')->name('get
 Route::post('/editCustomerProfile', 'ProfileController@customerProfile_edit')->name('customerProfile_edit');
 
 
+
 //Chat post
 Route::post('/post-msg', 'ChatController@chatMsg')->name('chatMsg');
 
@@ -56,3 +57,6 @@ Route::post('/post-msg', 'ChatController@chatMsg')->name('chatMsg');
 
 Route::post('/api/image-post', 'ProfileController@image_post')->name('image_post');
 
+
+//Garage Registration
+   Route::post('/garageRegistration', 'ProfileController@garageRegistration');
