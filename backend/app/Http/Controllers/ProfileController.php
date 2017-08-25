@@ -8,21 +8,28 @@ use Auth;
 
 class ProfileController extends Controller
 {
+
+    public function image_post(\Request $request){
+        dd($request->input());
+    }
+
+
     public function customerProfile(){
-    	
+        
+            	
     	$profile = User::where('id', Auth::user()->id)->first();
     	return $profile;
         //return view('customer.profile')->with('profile', $profile);
     }
 
     public function customerProfile_edit(Request $request){
-    	dd($request->input()); 
+    	//return $request->input(); 
         if($request->input('edit_profile_flag')){
 
             $user = User::find($request->input('edit_profile_flag'));
             $user->name = $request->input('name');
-            $user->email = $request->input('city_id');
-            $user->city_id = $request->input('email');
+            $user->email = $request->input('email');
+            $user->city_id = $request->input('city_id');
             $user->address = $request->input('address');
             $user->postal = $request->input('postal');
             $user->phone = $request->input('phone');

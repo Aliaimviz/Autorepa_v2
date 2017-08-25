@@ -66,6 +66,10 @@ Route::middleware('auth:api')->get('/edit-customerProfile', 'ProfileController@e
 //edit Customer Profile
 Route::middleware('auth:api')->post('/editCustomerProfile', 'ProfileController@customerProfile_edit')->name('customerProfile_edit');
 
+Route::middleware('auth:api')->post('/image-post', 'ProfileController@image_post')->name('customerProfile_edit');
+
+
+Route::middleware('auth:api')->post('/post-msg', 'ChatController@chatMsg')->name('chatMsg');
 
 /*Garage Section*/
 Route::group(['middleware' => ['auth:api']], function () {

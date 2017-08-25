@@ -9,29 +9,23 @@ use GuzzleHttp\Psr7\Request;
 
 $token = new Auth_token;
 $client = new Client(['base_uri' => $token->base_uri]);
+
 try{
-    // print_r($_POST);
-    // die();
-    $response  = $client->post('api/editCustomerProfile', [
+
+    $response  = $client->post('api/post-msg', [
         'headers' => [
             'Authorization' => 'Bearer '.$token->token,
             'Accept' => 'application/json',
             'Content-Type' => 'application/json',
         ],
-        'json' => [
-            //'user_id' => 'BUICK', //$_POST[''],
-            'name' => 'Rehan', //$_POST['checkBoxJobType'],
-            'city_id' => $_POST['city_id'],
-            'name' => $_POST['name'],
-            'email' => $_POST['email'],
-            'address' => $_POST['address'],
-            'postal' => $_POST['postal'],
-            'phone' => $_POST['phone'],
-            'pic' => $_POST['pic'],
-            'edit_profile_flag' => $_POST['edit_profile_flag'],
+        'json' => [         
+            'sender_id' => $_POST['sender_id'],
+            'receiver_id' => $_POST['receiver_id'],
+            'message' => $_POST['message'],
         ]
+
     ]);
- 
+    //var_dump($response);
     echo $response->getBody();
 
 }

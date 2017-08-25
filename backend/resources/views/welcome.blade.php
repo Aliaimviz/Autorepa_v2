@@ -19,4 +19,38 @@
             </div>
 
     </div>
+
+    <form id="imageForm"  method="post" enctype="multipart/form-data">
+        <input type="file" name="pic" id="pic">
+        <input type="submit" name="submit" id="submit">
+    </form>
+
 @endsection
+
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  
+<script type="text/javascript">
+
+$("#imageForm").on('submit', function(e){
+      e.preventDefault();
+
+
+      var formData = new FormData($("imageForm"));
+
+      $.ajax({
+            url: "http://localhost/Autorepa_v2/consumer/imagepost_api.php",
+            type: 'post',
+            data: {'pic': $("#imageForm").data('pic') },
+            success : function( data ) {
+              console.log(data);
+            }
+        });
+
+
+});
+
+</script>
+
