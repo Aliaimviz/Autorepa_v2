@@ -42,3 +42,6 @@ Route::post('/complete-job', 'JobController@completeJob')->name('sel_offer');
 Route::get('/customer-jobs', 'JobController@getCustomerJobs')->name('getCustomerJobs');
 
 Route::get('/customer-invoices', 'JobController@getCustomerInvoices')->name('getCustomerInvoices');
+
+//Edit profile post
+Route::post('/editCustomerProfile', 'ProfileController@customerProfile_edit')->name('customerProfile_edit');

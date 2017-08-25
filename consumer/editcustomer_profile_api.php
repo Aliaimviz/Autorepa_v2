@@ -20,15 +20,15 @@ try{
         ],
         'json' => [
             //'user_id' => 'BUICK', //$_POST[''],
-            'name' => 'Rehan', //$_POST['checkBoxJobType'],
-            'city_id' => $_POST['city_id'],
-            'name' => $_POST['name'],
-            'email' => $_POST['email'],
-            'address' => $_POST['address'],
-            'postal' => $_POST['postal'],
-            'phone' => $_POST['phone'],
-            'pic' => $_POST['pic'],
-            'edit_profile_flag' => $_POST['edit_profile_flag'],
+            //'name' => 'Rehan', //$_POST['checkBoxJobType'],
+            'city_id' => 2,//$_POST['city_id'],
+            'name' => 'irfan2', //$_POST['name'],
+            'email' => 'irfan.aimviz@gmail.com', //$_POST['email'],
+            'address' => 'This is a address', //$_POST['address'],
+            'postal' => '75300', //$_POST['postal'],
+            'phone' => '18456695', //$_POST['phone'],
+            'pic' => 'pic', //$_POST['pic'],
+            'edit_profile_flag' => 3, //$_POST['edit_profile_flag'],
         ]
     ]);
  

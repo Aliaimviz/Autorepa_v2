@@ -16,7 +16,7 @@ class ProfileController extends Controller
     }
 
     public function customerProfile_edit(Request $request){
-    	//dd($request->input()); 
+    	dd($request->input()); 
         if($request->input('edit_profile_flag')){
 
             $user = User::find($request->input('edit_profile_flag'));
@@ -49,13 +49,13 @@ class ProfileController extends Controller
             if($user->save()){
                  return response()->json(['success' => 'Profile updated.'], 200);  
             }else{
-                 return response()->json(['error' => 'Profile Couldnot be updated.'], 401);  
+                 return response()->json(['error' => 'Profile Couldnot be updated-1.'], 401);  
             }            
 
 
 
         }else{
-           return response()->json(['error' => 'Profile Couldnot be updated.'], 401);  
+           return response()->json(['error' => 'Profile Couldnot be updated-2.'], 401);  
         }
     }
 
