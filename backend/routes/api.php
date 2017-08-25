@@ -2,7 +2,6 @@
 
 use Illuminate\Http\Request;
 use app\User;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -75,5 +74,13 @@ Route::middleware('auth:api')->post('/post-msg', 'ChatController@chatMsg')->name
 Route::group(['middleware' => ['auth:api']], function () {
    //send proporsals
    Route::post('/sendProposal', 'GarageController@sendProposal');
-});
 
+   //Accepted Job Lists
+   Route::get('/jobLists/{id}', 'GarageController@jobLists');
+
+   //Get Garage Reviews
+   Route::get('/reviews/{id}', 'GarageController@reviews');
+
+   //Get Garage Notifications
+   Route::get('/notifications/{id}', 'GarageController@reviews');
+});

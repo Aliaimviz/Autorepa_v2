@@ -38,6 +38,8 @@ Route::post('/select-offer/', 'JobController@selectOffer')->name('sel_offer');
 //Complete a Job
 Route::post('/complete-job', 'JobController@completeJob')->name('sel_offer');
 
+
+Route::get('/reviews/{id}', 'GarageController@reviews');
 //Get Customer Jobs
 Route::get('/customer-jobs', 'JobController@getCustomerJobs')->name('getCustomerJobs');
 
@@ -46,9 +48,11 @@ Route::get('/customer-invoices', 'JobController@getCustomerInvoices')->name('get
 //Edit profile post
 Route::post('/editCustomerProfile', 'ProfileController@customerProfile_edit')->name('customerProfile_edit');
 
+
 //Chat post
 Route::post('/post-msg', 'ChatController@chatMsg')->name('chatMsg');
 
 //Check Route 
 
 Route::post('/api/image-post', 'ProfileController@image_post')->name('image_post');
+

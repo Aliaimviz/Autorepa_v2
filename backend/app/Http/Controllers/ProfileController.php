@@ -18,6 +18,11 @@ class ProfileController extends Controller
         
             	
     	$profile = User::where('id', Auth::user()->id)->first();
+    	return view('customer.profile')->with('profile', $profile);
+    }
+
+    public function customerProfile_edit_post(){
+
     	return $profile;
         //return view('customer.profile')->with('profile', $profile);
     }

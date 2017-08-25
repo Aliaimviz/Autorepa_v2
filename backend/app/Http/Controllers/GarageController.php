@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\City;
 use App\Garage;
+use App\Review;
 use App\Job_offer;
+use App\Notificaion;
 use App\Job;
 use Illuminate\Support\Facades\Input;
 use Carbon;
@@ -119,4 +121,12 @@ class GarageController extends Controller
         }
     }
 
+    public function notifications($user_id){
+        try {   
+            $reviews = Notification::where('user_id', $user_id)->get();
+            return response()->json(['Success' => $reviews], 200); 
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Error:'.$e->getMessage()], 401); 
+        }
+    }
 }
