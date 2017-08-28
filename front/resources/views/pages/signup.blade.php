@@ -1,16 +1,18 @@
-<?php include ('header.php');?>
+@extends('masterlayout')
+@section('content')
+
 <section id="terms">
 <div class=" page-title"  style="
     background: #f6f6f6;
-    padding: 20px 0;
-">
+    padding: 20px 0;">
+
     <div class="container">
         <div class="row">
-          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 float-left">   
-            <h1>Sing up</h1> 
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 float-left">
+            <h1>Sing up</h1>
           </div>
         </div>
-    </div>  
+    </div>
   </div>
    <div class="alredy">
    <div class="container">
@@ -20,7 +22,7 @@
        </div>
      </div>
    </div>
- </div> 
+ </div>
 
  <div class="singup-form">
    <div class="container">
@@ -135,7 +137,7 @@
            <input type="password" placeholder="Password">
          </div>
          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 float-left">
-           <input type="password" placeholder="Conform Password">           
+           <input type="password" placeholder="Conform Password">
          </div>
          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 float-left">
            <a href="#">Create Account</a>
@@ -144,13 +146,11 @@
 
       <div class="row">
          <div class="invoice-btn invoice-btn-la">
-            <a href="#">Back</a>        
+            <a href="#">Back</a>
       </div>
 
       </div>
    </div>
  </div>
-
 </section>
-
-<?php include ('footer.php');?>
+@endsection

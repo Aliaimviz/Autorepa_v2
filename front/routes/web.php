@@ -18,4 +18,7 @@ Route::get('/', function () {
 Route::get('/generate', 'HomeController@generate');
 Route::get('/home/{id}', 'HomeController@api');
 
-Auth::routes();
+//Register Controller
+Route::get('/register', 'Auth\RegisterController@registerView')->name('register');
+
+//Auth::routes();
