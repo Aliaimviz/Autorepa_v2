@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Auto Repa</title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{ asset('asset/css/bootstrap-datetimepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/css/bootstrap-datepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/css/bootstrap-datepicker.standalone.min.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/css/font-awesome.min.css') }}">
