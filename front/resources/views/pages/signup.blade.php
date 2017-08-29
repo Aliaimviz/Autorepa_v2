@@ -50,6 +50,13 @@
        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 float-left">
           <input type="email" placeholder="Email Id">
        </div>
+
+       <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 float-left">
+         <select data-placeholder="Language...">
+            <option value="2">Customer</option>
+            <option value="1">Garage</option>
+          </select>
+ </div>
        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 float-left">
          <select data-placeholder="Language...">
                   <option value="#">Language</option>

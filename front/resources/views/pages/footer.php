@@ -3,7 +3,7 @@
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                   
+
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -27,7 +27,7 @@
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                   
+
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -81,7 +81,7 @@
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                   
+
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -107,7 +107,7 @@
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                   
+
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -136,7 +136,7 @@
             <li><a href="#"><i class="f">|</i></a></li>
 						<li><p>© 2017 All Rights Reserved</p></li>
 					</ul>
-                 
+
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 float-left">
 					<ul class="footer-nav">
@@ -144,7 +144,7 @@
               <li><a href="#">Contact us</a></li>
               <li><a href="http://site.startupbug.net:6999/auto/terms-condition.php">Terms & Conditions</a></li>
               <li><a href="http://site.startupbug.net:6999/auto/Confidentiality.php">Confidentiality</a></li>
-              
+
           </ul>
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 float-left">
@@ -164,12 +164,14 @@
 <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script> 
+    <script src="js/bootstrap.min.js"></script>
     <script src="js/moment.min.js"></script>
         <script src="js/collapse.js"></script>
     <script src="js/transition.js"></script>
     <script src="js/bootstrap-datetimepicker.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script src="js/custom.js"></script>
+
 <script type="text/javascript">
             jQuery(function () {
                 jQuery('#datetimepicker4').datetimepicker();
@@ -194,7 +196,7 @@ for (i = 0; i < acc.length; i++) {
       panel.style.maxHeight = null;
     } else {
       panel.style.maxHeight = panel.scrollHeight + "px";
-    } 
+    }
   }
 }
 </script>
