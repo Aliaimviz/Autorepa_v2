@@ -28,7 +28,8 @@
    <div class="container">
      <div class="row">
        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 float-left">
-       <select data-placeholder="Form Of Adress" name="">
+     <form id="registerForm" name="registerForm" method="post" action="{{route('post_register')}}">
+       <select data-placeholder="Form Of Adress" name="title">
           <option>Form Of Adress</option>
           <option value="MR">Mr.</option>
           <option value="MRS">Mrs.</option>
@@ -36,29 +37,38 @@
         </select>
        </div>
        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 float-left">
-         <input type="text" placeholder="First Name">
+         <input type="text" name="first_name" placeholder="First Name">
        </div>
        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 float-left">
-         <input type="text" placeholder="Last Name">
+         <input type="text" name="last_name" placeholder="Last Name">
        </div>
        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 float-left">
-          <input type="text" class="form-control" value="Date Of Birth" id="datepicker" >
+          <input type="text" name="birth_date" class="form-control" value="Date Of Birth" id="datepicker" >
        </div>
       </div>
 
       <div class="row">
        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 float-left">
-          <input type="email" placeholder="Email Id">
+          <input type="email" name="email" placeholder="Email Id">
        </div>
 
        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 float-left">
-         <select data-placeholder="Language...">
+         <select data-placeholder="Role" name="userRole">
             <option value="2">Customer</option>
             <option value="1">Garage</option>
           </select>
- </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 float-left">
+        <select data-placeholder="Cities..." name="city_id">
+          @foreach($cities as $city)
+            <option value="{{$city->id}}">{{$city->city_name}}</option>
+          @endforeach
+         </select>
+     </div>
+
        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 float-left">
-         <select data-placeholder="Language...">
+         <select data-placeholder="Language..." name="language">
                   <option value="#">Language</option>
                   <option value="AF">Afrikanns</option>
                   <option value="SQ">Albanian</option>
@@ -134,23 +144,36 @@
                   <option value="XH">Xhosa</option>
                 </select>
        </div>
-       <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 float-left">
+       <!-- <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 float-left">
          <input type="text" placeholder="Username">
+       </div> -->
+       <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 float-left">
+         <input type="text" name="address" placeholder="address">
+       </div>
+
+       <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 float-left">
+         <input type="text" name="postal" placeholder="postalcode">
+       </div>
+
+       <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 float-left">
+         <input type="number" name="phone" placeholder="phone">
        </div>
       </div>
 
       <div class="row passbtn">
          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 float-left">
-           <input type="password" placeholder="Password">
+           <input type="password" name="password" placeholder="Password">
          </div>
          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 float-left">
-           <input type="password" placeholder="Conform Password">
+           <input type="password" name="password" placeholder="Conform Password">
          </div>
          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 float-left">
-           <a href="#">Create Account</a>
+           <!--<a href="#">Create Account</a> -->
+           <input type="hidden" value="{{Session::token()}}" name="_token"/>
+           <input type="submit" name="submit" id="submit" value="Create Account"/>
          </div>
       </div>
-
+    </form>
       <div class="row">
          <div class="invoice-btn invoice-btn-la">
             <a href="#">Back</a>

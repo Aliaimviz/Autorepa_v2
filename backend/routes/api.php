@@ -22,6 +22,8 @@ Route::middleware('auth:api')->get('/jobs', 'JobController@getJobs');
 //Single Job Get
 Route::middleware('auth:api')->get('/single-job/{id}', 'JobController@getSingleJob');
 
+Route::get('/register-view', 'Auth\RegisterController@registerView');
+
 Route::post('/register', 'Auth\RegisterController@registerUser');
 
 //Job Post Api
@@ -43,7 +45,7 @@ Route::middleware('auth:api')->post('/complete-job', 'JobController@completeJob'
 //Customer Jobs
 Route::middleware('auth:api')->get('/customer-jobs', 'JobController@getCustomerJobs')->name('getCustomerJobs');
 
-//Garage Jobs 
+//Garage Jobs
 Route::middleware('auth:api')->get('/garage-in-progress-jobs', 'JobController@getGarageInProgressJobs')->name('getGarageJobs');
 
 //Customer Invoices

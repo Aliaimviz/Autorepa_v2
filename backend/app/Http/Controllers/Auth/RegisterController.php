@@ -41,20 +41,32 @@ class RegisterController extends Controller
     }
 
     public function registerView(){
-        $cities = City::all();
-        return view('register')->with('cities', $cities);
+        $data['cities'] = City::all();
+        //return response()->json($data);
+        return $data;
+        // json_decode( $data (string) $response->getBody() )
+        //   return response()->json(['data' => $data['cities']], 200);
+        //return view('register')->with('cities', $cities);
     }
 
-    public function registerUser(Request $request){
-        $user = User::create([
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'password' => bcrypt( $request->input('password') ),
-            'city_id' => $request->input('city_id'),
-            'address' => $request->input('address'),
-            'postal' => $request->input('postal'),
-            'phone' => $request->input('phone'),
-        ]);
+    public function registerUser($request){
+      //$input = $request[0];
+      return $request->input();//json_decode($input);
+      //die();
+      //return $input['title'];
+      $user = User::create([
+          'title' => $request->input('title'),
+          'first_name' => $request->input('first_name'),
+          'last_name' => $request->input('last_name'),
+          'email' => $request->input('email'),
+          'birth_date' => $request->input('birth_date'),
+          'password' => bcrypt( $request->input('password') ),
+          'city_id' => $request->input('city_id'),
+          'language' => $request->input('language'),
+          'address' => $request->input('address'),
+          'postal' => $request->input('postal'),
+          'phone' => $request->input('phone'),
+      ]);
 
         if($user){
             //$user->roles()->attach($user->id);

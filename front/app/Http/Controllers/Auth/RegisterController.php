@@ -6,6 +6,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -35,7 +36,7 @@ class RegisterController extends Controller
      * @return void
      */
     public function __construct()
-    {
+    {  parent::__construct();
         $this->middleware('guest');
     }
 
@@ -70,28 +71,46 @@ class RegisterController extends Controller
     }
 
     public function registerView(){
-      return view('pages.signup');
+
+      $response  = $this->client->get('api/register-view', [
+          'headers' => [
+              'Authorization' => 'Bearer '.$this->token,
+              'Accept' => 'application/json',
+              'Content-Type' => 'application/json',
+          ]
+      ]);
+      //dd(123);
+       $data = json_decode($response->getBody());
+       $cities = $data->cities;
+    //  dd($response->getBody());
+      return view('pages.signup')->with('cities', $cities);
     }
 
     public function postRegister(Request $request){
-      dd($request->input());
-      $response  = $client->post('api/register', [
+      //dd($request->input() ) );
+    //  dd();
+      $response  = $this->client->post('api/register', [
           'headers' => [
               'Authorization' => 'Bearer '.$this->token,
               'Accept' => 'application/json',
               'Content-Type' => 'application/json',
           ],
           'json' => [
-              'email' => 'tesasdasdt@gmail.com',
-              'name' => 'Test user',
-              'password' => 'abc123',
-              'address' => 'abc address',
-              'postal' => '755210',
-              'phone' => '020',
-              'city_id' => '1',
-              'userRole' => '1',
+            'title' => $request->input('title'),
+            'first_name' => $request->input('first_name'),
+            'last_name' => $request->input('last_name'),
+            'email' => $request->input('email'),
+            'birth_date' => $request->input('birth_date'),
+            'password' => bcrypt( $request->input('password') ),
+            'city_id' => $request->input('city_id'),
+            'language' => $request->input('language'),
+            'address' => $request->input('address'),
+            'postal' => $request->input('postal'),
+            'phone' => $request->input('phone'),
+            //$request->all()
           ]
       ]);
 
+      dd(json_decode( $response->getBody() ) );
     }
 }
