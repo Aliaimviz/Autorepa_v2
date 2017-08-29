@@ -168,13 +168,13 @@
     <script src="{{ asset('asset/js/moment.min.js') }}"></script>
     <script src="{{ asset('asset/js/collapse.js') }}"></script>
     <script src="{{ asset('asset/js/transition.js') }}"></script>
-    <script src="{{ asset('asset/js/bootstrap-datetimepicker.min.js') }}"></script>
+    <script src="{{ asset('asset/js/bootstrap-datepicker.js') }}"></script>
 <script src="{{ asset('asset/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('asset/js/custom.js') }}"></script>
 
 <script type="text/javascript">
             jQuery(function () {
-                jQuery('#datetimepicker4').datetimepicker();
+                jQuery('#datepicker').datepicker();
             });
 </script>
 <script >

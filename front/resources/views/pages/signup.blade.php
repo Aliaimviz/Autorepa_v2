@@ -42,7 +42,7 @@
          <input type="text" placeholder="Last Name">
        </div>
        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 float-left">
-          <input type="text" class="form-control" value="Date Of Birth" id="datetimepicker4" >
+          <input type="text" class="form-control" value="Date Of Birth" id="datepicker" >
        </div>
       </div>
 
