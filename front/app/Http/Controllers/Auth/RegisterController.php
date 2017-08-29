@@ -72,4 +72,26 @@ class RegisterController extends Controller
     public function registerView(){
       return view('pages.signup');
     }
+
+    public function postRegister(Request $request){
+      dd($request->input());
+      $response  = $client->post('api/register', [
+          'headers' => [
+              'Authorization' => 'Bearer '.$this->token,
+              'Accept' => 'application/json',
+              'Content-Type' => 'application/json',
+          ],
+          'json' => [
+              'email' => 'tesasdasdt@gmail.com',
+              'name' => 'Test user',
+              'password' => 'abc123',
+              'address' => 'abc address',
+              'postal' => '755210',
+              'phone' => '020',
+              'city_id' => '1',
+              'userRole' => '1',
+          ]
+      ]);
+
+    }
 }

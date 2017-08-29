@@ -20,5 +20,6 @@ Route::get('/home/{id}', 'HomeController@api');
 
 //Register Controller
 Route::get('/register', 'Auth\RegisterController@registerView')->name('register');
+Route::post('/post-register', 'Auth\RegisterController@postRegister')->name('post_register');  //
 
 //Auth::routes();
