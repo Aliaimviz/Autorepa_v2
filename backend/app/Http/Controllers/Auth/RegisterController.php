@@ -49,9 +49,10 @@ class RegisterController extends Controller
         //return view('register')->with('cities', $cities);
     }
 
-    public function registerUser($request){
+    public function registerUser(Request $request){
       //$input = $request[0];
-      return $request->input();//json_decode($input);
+      $test = $request->input(); //json_decode($input);
+      //dd(json_decode((string)$test));
       //die();
       //return $input['title'];
       $user = User::create([
@@ -72,13 +73,12 @@ class RegisterController extends Controller
             //$user->roles()->attach($user->id);
             \DB::table('role_user')->insert([
                 'user_id' => $user->id, 'role_id' => $request->input('userRole')
-
             ]);
 
-            return $user;
+            return response()->json(['success' => true], 200);
 
         }else{
-           return 0;
+            return response()->json(['success' => false], 200);
         }
 
     }

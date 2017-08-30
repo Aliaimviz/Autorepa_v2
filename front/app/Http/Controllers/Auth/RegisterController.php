@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
-
+use DB;
 class RegisterController extends Controller
 {
     /*
@@ -72,28 +72,33 @@ class RegisterController extends Controller
 
     public function registerView(){
 
-      $response  = $this->client->get('api/register-view', [
-          'headers' => [
-              'Authorization' => 'Bearer '.$this->token,
-              'Accept' => 'application/json',
-              'Content-Type' => 'application/json',
-          ]
-      ]);
-      //dd(123);
-       $data = json_decode($response->getBody());
-       $cities = $data->cities;
+      // $response  = $this->client->get('api/register-view', [
+      //     'headers' => [
+      //         'Authorization' => 'Bearer '.$this->token,
+      //         'Accept' => 'application/json',
+      //         'Content-Type' => 'application/json',
+      //     ]
+      // ]);
+      // //dd(123);
+      //  $data = json_decode($response->getBody());
+      //  $cities = $data->cities;
     //  dd($response->getBody());
+      // if($registerStatus != null){
+      //   $status = $registerStatus;
+      // }
+      $cities = DB::table('cities')->get();
+      //dd($cities);
       return view('pages.signup')->with('cities', $cities);
     }
 
     public function postRegister(Request $request){
-      //dd($request->input() ) );
+      //dd($request->input());
     //  dd();
       $response  = $this->client->post('api/register', [
           'headers' => [
               'Authorization' => 'Bearer '.$this->token,
-              'Accept' => 'application/json',
-              'Content-Type' => 'application/json',
+              // 'Accept' => 'application/json',
+              // 'Content-Type' => 'application/json',
           ],
           'json' => [
             'title' => $request->input('title'),
@@ -107,10 +112,25 @@ class RegisterController extends Controller
             'address' => $request->input('address'),
             'postal' => $request->input('postal'),
             'phone' => $request->input('phone'),
-            //$request->all()
+            'userRole' => $request->input('userRole'),
           ]
       ]);
+      //$response = $request->send();
+      $response = json_decode( $response->getBody() );
 
-      dd(json_decode( $response->getBody() ) );
+      $cities = DB::table('cities')->get();
+
+      if($response->success == 1){
+        //return route('register', ['' => ]);
+        return view('pages.signup')->with('status', 1)
+                                  ->with('cities', $cities)
+                                  ->with('msg', 'User Registered Succesfully');
+
+      }else if($response->success == 0){
+        return view('pages.signup')->with('status', 0)->with('cities', $cities)
+        ->with('msg', 'User Couldnot be Registered');
+      }
+      // if()
+      // dd( json_decode( $response->getBody() ) );
     }
 }

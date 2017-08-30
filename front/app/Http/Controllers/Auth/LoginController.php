@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -35,5 +36,22 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function loginView()
+    {
+        //return view('pages.');
+    }
+
+    public function postLogin(Request $request){
+
+
+      if(Auth::attempt(['email' => $request->user_email, 'password' => $request->user_password] )) {
+         
+      }else{
+        $responseText = '<div class="alert alert-danger"> <p>Error! Invalid Email or Password </p></div>';
+          return \Response::json(array('success' => false, 'responseText' => $responseText), 400);
+
+      }
     }
 }

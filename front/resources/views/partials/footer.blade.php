@@ -60,9 +60,10 @@
                         <div class="login-fileds">
                           <h1>Don’t have Account? </h1>
                           <p><i class="fa fa-facebook-official"></i> Login with facebook</p>
-                          <form>
-                            <input type="email" placeholder="Email">
-                            <input type="password" placeholder="Password">
+                          <form id="loginForm" action="{{route('loginPost')}}" method="post">
+                            <input type="email" name="email" placeholder="Email">
+                            <input type="password" name="password" placeholder="Password">
+                            <input type="hidden" value="{{Session::token()}}" name="_token"/>
                             <input type="submit" value="Login" class="su">
                           </form>
                         </div>

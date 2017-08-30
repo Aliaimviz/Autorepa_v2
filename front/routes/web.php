@@ -18,8 +18,10 @@ Route::get('/', function () {
 Route::get('/generate', 'HomeController@generate');
 Route::get('/home/{id}', 'HomeController@api');
 
-//Register Controller
+//Register API Controller
 Route::get('/register', 'Auth\RegisterController@registerView')->name('register');
 Route::post('/post-register', 'Auth\RegisterController@postRegister')->name('post_register');  //
 
+//Login Post
+Route::post('/login-post', 'Auth\LoginController@postLogin')->name('loginPost');  //
 //Auth::routes();
