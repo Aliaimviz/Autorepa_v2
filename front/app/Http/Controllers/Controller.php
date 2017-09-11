@@ -14,7 +14,7 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public $base_uri = 'http://localhost/autorepa/Autorepa_v2/backend/public/';
+    public $base_uri = 'http://localhost/example/backend/public/';
 
   	public $token;
     public $client;

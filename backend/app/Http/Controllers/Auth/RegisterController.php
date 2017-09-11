@@ -49,62 +49,60 @@ class RegisterController extends Controller
         //return view('register')->with('cities', $cities);
     }
 
-    public function registerUser($request){
+    public function registerUser(Request $request){
       //$input = $request[0];
-      return $request->input();//json_decode($input);
+      //return response()->json(['success' => $request->all()], 200);
       //die();
       //return $input['title'];
-      $user = User::create([
-          'title' => $request->input('title'),
-          'first_name' => $request->input('first_name'),
-          'last_name' => $request->input('last_name'),
-          'email' => $request->input('email'),
-          'birth_date' => $request->input('birth_date'),
-          'password' => bcrypt( $request->input('password') ),
-          'city_id' => $request->input('city_id'),
-          'language' => $request->input('language'),
-          'address' => $request->input('address'),
-          'postal' => $request->input('postal'),
-          'phone' => $request->input('phone'),
-      ]);
+        //return response()->json(['success' => $request[0]->title]);
+        $user = User::create([
+          'title' => $request->all()[0]['title'],
+          'first_name' => $request->all()[0]['first_name'],
+          'last_name' => $request->all()[0]['last_name'],
+          'birth_date' => $request->all()[0]['birth_date'],
+          'email' => $request->all()[0]['email'],
+          'password' => bcrypt( $request->all()[0]['password'] ),
+          'city_id' => $request->all()[0]['city_id'],
+          'language' => $request->all()[0]['language'],
+          'address' => $request->all()[0]['address'],
+          'postal' => $request->all()[0]['postal'],
+          'phone' => $request->all()[0]['phone'],
+        ]);
 
         if($user){
             //$user->roles()->attach($user->id);
             \DB::table('role_user')->insert([
-                'user_id' => $user->id, 'role_id' => $request->input('userRole')
-
+                'user_id' => $user->id, 'role_id' => $request->all()[0]['userRole']
             ]);
-
             return $user;
-
         }else{
            return 0;
         }
 
     }
 
-    // public function registerSubmit(Request $request){
-    //   //  dd($request->input('email'));
-    //
-    //     $user = User::create([
-    //         'name' => $request->input('name'),
-    //         'address' => $request->input('address'),
-    //         'postal' => $request->input('postal'),
-    //         'phone' => $request->input('phone'),
-    //         'city_id' => $request->input('city_id'),
-    //         'email' => $request->input('email'),
-    //         'password' => bcrypt( $request->input('password') ),
-    //     ]);
-    //     if($user){
-    //         //$user->roles()->attach($user->id);
-    //         \DB::table('role_user')->insert([
-    //             'user_id' => $user->id, 'role_id' => $request->input('userRole')
-    //
-    //         ]);
-    //     }else{
-    //        return 0;
-    //     }
-    // }
+     /*public function registerSubmit(Request $request){
+       //  dd($request->input('email'));
+    
+         $user = User::create([
+             'name' => $request->input('name'),
+             'address' => $request->input('address'),
+             'postal' => $request->input('postal'),
+             'phone' => $request->input('phone'),
+             'city_id' => $request->input('city_id'),
+             'email' => $request->input('email'),
+             'password' => bcrypt( $request->input('password') ),
+         ]);
+         if($user){
+             //$user->roles()->attach($user->id);
+             \DB::table('role_user')->insert([
+                 'user_id' => $user->id, 'role_id' => $request->input('userRole')
+    
+             ]);
+         }else{
+            return 0;
+         }
+     }*/
 
     /**
      * Get a validator for an incoming registration request.

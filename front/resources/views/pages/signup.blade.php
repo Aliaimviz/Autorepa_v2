@@ -43,7 +43,7 @@
          <input type="text" name="last_name" placeholder="Last Name">
        </div>
        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 float-left">
-          <input type="text" name="birth_date" class="form-control" value="Date Of Birth" id="datepicker" >
+          <input type="text" name="birth_date" class="form-control" placeholder="Date Of Birth" id="datepicker" data-date-format="yyyy/mm/dd">
        </div>
       </div>
 

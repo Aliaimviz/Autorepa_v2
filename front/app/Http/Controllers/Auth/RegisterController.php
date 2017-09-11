@@ -87,8 +87,6 @@ class RegisterController extends Controller
     }
 
     public function postRegister(Request $request){
-      //dd($request->input() ) );
-    //  dd();
       $response  = $this->client->post('api/register', [
           'headers' => [
               'Authorization' => 'Bearer '.$this->token,
@@ -96,18 +94,17 @@ class RegisterController extends Controller
               'Content-Type' => 'application/json',
           ],
           'json' => [
-            'title' => $request->input('title'),
+            /*'title' => $request->input('title'),
             'first_name' => $request->input('first_name'),
             'last_name' => $request->input('last_name'),
             'email' => $request->input('email'),
-            'birth_date' => $request->input('birth_date'),
             'password' => bcrypt( $request->input('password') ),
             'city_id' => $request->input('city_id'),
             'language' => $request->input('language'),
             'address' => $request->input('address'),
             'postal' => $request->input('postal'),
-            'phone' => $request->input('phone'),
-            //$request->all()
+            'phone' => $request->input('phone'),*/
+            $request->all()
           ]
       ]);
 

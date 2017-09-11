@@ -1962,3 +1962,13 @@ ul.dropdownmenu.important{
 ul.dropdownmenu li a {
     text-decoration: none !important;
 }
+ul.main-nav li a:hover::before {
+    border-top: 1px solid #5ea5fd;
+    content: "";
+    margin: 0 auto;
+    position: absolute;
+    top: 10px;
+    bottom: 0;
+    width: 20px;
+    z-index: -1;
+}

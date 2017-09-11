@@ -175,6 +175,7 @@
 <script type="text/javascript">
             jQuery(function () {
                 jQuery('#datepicker').datepicker();
+                
             });
 </script>
 <script >
