@@ -51,7 +51,12 @@ class RegisterController extends Controller
 
     public function registerUser(Request $request){
       //$input = $request[0];
+<<<<<<< HEAD
       //return response()->json(['success' => $request->all()], 200);
+=======
+      $test = $request->input(); //json_decode($input);
+      //dd(json_decode((string)$test));
+>>>>>>> 5d0bbc24fadd8b9ccc97b95bfe52fcf91ffece73
       //die();
       //return $input['title'];
         //return response()->json(['success' => $request[0]->title]);
@@ -72,11 +77,19 @@ class RegisterController extends Controller
         if($user){
             //$user->roles()->attach($user->id);
             \DB::table('role_user')->insert([
+<<<<<<< HEAD
                 'user_id' => $user->id, 'role_id' => $request->all()[0]['userRole']
             ]);
             return $user;
+=======
+                'user_id' => $user->id, 'role_id' => $request->input('userRole')
+            ]);
+
+            return response()->json(['success' => true], 200);
+
+>>>>>>> 5d0bbc24fadd8b9ccc97b95bfe52fcf91ffece73
         }else{
-           return 0;
+            return response()->json(['success' => false], 200);
         }
 
     }
